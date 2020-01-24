@@ -1,0 +1,186 @@
+#include <stdio.h> 
+
+void q1Average(){
+    int n, i;
+    float num[100], sum = 0.0, avg;
+    printf("Enter the numbers of elements: ");
+    scanf("%d", &n);
+    while (n > 100 || n < 1) {
+        printf("Error! number should in range of (1 to 100).\n");
+        printf("Enter the number again: ");
+        scanf("%d", &n);
+    }
+    for (i = 0; i < n; ++i) {
+        printf("%d. Enter number: ", i + 1);
+        scanf("%f", &num[i]);
+        sum += num[i];
+    }
+    avg = sum / n;
+    printf("Average = %.2f", avg);
+}
+void q1max(){
+ int i, n;
+    float arr[100];
+    printf("Enter the number of elements (1 to 100): ");
+    scanf("%d", &n);
+    for (i = 0; i < n; ++i) {
+        printf("Enter number%d: ", i + 1);
+        scanf("%f", &arr[i]);
+    }
+    for (i = 1; i < n; ++i) {
+        if (arr[0] < arr[i])
+            arr[0] = arr[i];
+    }
+    printf("Largest element = %.2f", arr[0]);
+
+}
+
+void q1min(){
+  
+    int array[100], minimum, size, c, location = 1;
+   
+    printf("Enter number of elements in array\n");
+    scanf("%d", &size);
+   
+    printf("Enter %d integers\n", size);
+   
+    for (c = 0; c < size; c++)
+        scanf("%d", &array[c]);
+   
+    minimum = array[0];
+   
+    for (c = 1; c < size; c++)
+    {
+        if (array[c] < minimum)
+        {
+           minimum = array[c];
+           location = c+1;
+        }
+    }
+   
+    printf("Minimum element is present at location %d and its value is %d.\n", location, minimum);
+}
+
+
+
+
+
+void q2(){
+  int n;
+  printf("Enter input\n");
+    scanf("%s", &n);
+   switch (n) 
+   { 
+
+       case '+': printf("Process in new state"); 
+               break; 
+       case '-': printf("Process in ready state"); 
+                break; 
+       case '*': printf("Process in running state"); 
+               break; 
+      case '/': printf("Process moved to waiting state"); 
+               break; 
+
+      case '$': printf("Process waiting for CPU"); 
+               break; 
+      case '#': printf("Process completed"); 
+               break; 
+       default: printf("invalid choice"); 
+                break;   
+   } 
+
+
+}
+
+
+
+  typedef struct complex {
+    float real;
+    float imag;
+} complex;
+complex add(complex n1, complex n2);
+void q3(){
+
+    complex n1, n2, result;
+    printf("For 1st complex number \n");
+    printf("Enter the real and imaginary parts: ");
+    scanf("%f %f", &n1.real, &n1.imag);
+    printf("\nFor 2nd complex number \n");
+    printf("Enter the real and imaginary parts: ");
+    scanf("%f %f", &n2.real, &n2.imag);
+    result = add(n1, n2);
+    printf("Sum = %.1f + %.1fi", result.real, result.imag);
+
+
+
+}
+complex add(complex n1, complex n2) {
+    complex temp;
+    temp.real = n1.real + n2.real;
+    temp.imag = n1.imag + n2.imag;
+    return (temp);
+}
+
+
+void q4(){
+  struct complex
+{
+   int real, img;
+};
+
+
+   struct complex a, b, c;
+
+   printf("Enter a and b where a + ib is the first complex number.\n");
+   scanf("%d%d", &a.real, &a.img);
+   printf("Enter c and d where c + id is the second complex number.\n");
+   scanf("%d%d", &b.real, &b.img);
+
+   c.real = a.real + b.real;
+   c.img = a.img + b.img;
+
+   printf("Sum of the complex numbers: (%d) + (%di)\n", c.real, c.img);
+
+}
+  
+void q5(){
+  struct process {
+    int process_id[50];
+    
+    int cpu_id[50];
+    char State[50];
+    int parent_id[50];
+    int total_wait_time[50];
+} s[10];
+    int i;
+    printf("Enter information of processs:\n");
+    for (i = 0; i < 10; ++i) {
+
+
+        printf("Enter for user : %d\n\n", i);
+
+        printf("\n\nEnter process id: ");
+        scanf("%i" ,s[i].process_id);
+        printf("Enter cpu id: ");
+        scanf("%i" ,s[i].cpu_id);
+        printf("Enter State: ");
+        fgets(s[i].State, 50, stdin);
+        scanf("%s",s[i].State);
+          printf("Enter parent id: ");
+        scanf("%i" ,s[i].parent_id); printf("Enter total wait time : ");
+        scanf("%i" ,s[i].total_wait_time);
+    }
+    printf("Displaying Information:\n\n");
+    for (i = 0; i < 10; ++i) {
+        printf("\nProcess ID: %d\n",s[i].process_id);
+        printf("CPU ID: %d\n",s[i].cpu_id);
+        printf("State: %d\n", s[i].State);
+        printf("Parent ID: %d\n",s[i].parent_id);
+        printf("Total wait time: %d\n",s[i].total_wait_time);
+        printf("\n");
+    }
+
+}
+void  main(){
+  q5();
+}
