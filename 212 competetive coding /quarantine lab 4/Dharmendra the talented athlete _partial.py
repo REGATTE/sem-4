@@ -17,12 +17,19 @@ Output Format
 4
 
 """
-N = int(input())
+#include <iostream> 
+using namespace std; 
+const int MAXN = 1e6 + 1;
 
-data = [0]*(N+1)
-data[:3] = 1,1,2
+int main() { 
+    int dp[MAXN];
+    dp[0] = 1;
+    dp[1] = 1;
+    dp[2] = 2;
+    int n; cin >> n;
+    for(int i = 3;i <= n;i++) {
+        dp[i] = dp[i - 3] + dp[i - 2] + dp[i - 1];
+    }
 
-for i in range(3,N+1):
-    data[i] = data[i-1] + data[i-2] + data[i-3]
-    
-print(data[N])
+    cout << dp[n] << '\n';
+}
