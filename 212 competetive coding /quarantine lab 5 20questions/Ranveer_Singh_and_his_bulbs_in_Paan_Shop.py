@@ -1,0 +1,19 @@
+lis=list(map(int,input().split()))
+k=0
+s=0
+l=0
+w=0
+i=0
+while(i<(len(lis)-1)):
+    
+    if(lis[i]==lis[i+1]):
+        s=s+1
+        if(lis[i]==0):
+            lis[i+1]=1
+            i=i+1
+        else:
+            lis[i+1]=0
+            i=i+1
+    else:
+        i=i+1
+print(s)
